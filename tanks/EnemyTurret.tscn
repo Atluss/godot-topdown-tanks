@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 34.6531
+radius = 32.9121
 
 [node name="EnemyTank" instance=ExtResource( 1 )]
 
