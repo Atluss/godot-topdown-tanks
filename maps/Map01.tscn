@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://tanks/EnemyTank.tscn" type="PackedScene" id=4]
 [ext_resource path="res://bullets/EnemyBullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tanks/EnemyTurret.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bullets/SmallBullet.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -27,6 +29,7 @@ script = ExtResource( 1 )
 
 [node name="Ground" type="TileMap" parent="." index="0"]
 
+position = Vector2( 2.50903, -1.67017 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 128, 128 )
@@ -99,6 +102,29 @@ max_health = 100
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 6 )]
 
+[node name="EnemyTank" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 1986.48, 691.215 )
+Bullet = ExtResource( 8 )
+max_speed = 0
+rotation_speed = 1.0
+gun_cooldown = 0.2
+max_health = 70
+turret_speed = 5.0
+detect_radius = 400
+
+[node name="EnemyTank2" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 2477.43, 671.688 )
+rotation = 2.08812
+Bullet = ExtResource( 8 )
+max_speed = 0
+rotation_speed = 1.0
+gun_cooldown = 0.2
+max_health = 70
+turret_speed = 5.0
+detect_radius = 400
+
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
 
 [connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
@@ -106,5 +132,9 @@ max_health = 100
 [connection signal="shoot" from="Paths/Path2D/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
 
 [connection signal="shoot" from="Paths/Path2D2/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
+
+[connection signal="shoot" from="EnemyTank" to="." method="_on_Tank_shoot"]
+
+[connection signal="shoot" from="EnemyTank2" to="." method="_on_Tank_shoot"]
 
 
