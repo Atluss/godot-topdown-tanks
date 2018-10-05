@@ -46,6 +46,13 @@ _sections_unfolded = [ "Offset", "Region", "Transform" ]
 position = Vector2( 60, 0 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Flash" parent="Turret" index="1"]
+
+position = Vector2( 53, 0 )
+texture = ExtResource( 3 )
+offset = Vector2( 25, 0 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 
 input_pickable = true
