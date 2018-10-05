@@ -46,6 +46,14 @@ _sections_unfolded = [ "Offset", "Region", "Transform" ]
 position = Vector2( 60, 0 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Flash" parent="Turret" index="1"]
+
+visible = false
+position = Vector2( 53, 0 )
+texture = ExtResource( 3 )
+offset = Vector2( 25, 0 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 
 input_pickable = true
@@ -53,6 +61,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 16
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -63,6 +72,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="LookAhead1" type="RayCast2D" parent="." index="5"]
 
 position = Vector2( 0, -30 )
+rotation = -0.126257
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 100, 0 )
@@ -72,6 +82,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="LookAhead2" type="RayCast2D" parent="." index="6"]
 
 position = Vector2( 0, 30 )
+rotation = 0.127551
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 100, 0 )

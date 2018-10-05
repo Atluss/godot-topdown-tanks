@@ -58,6 +58,7 @@ click=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_n
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="bullets"
+2d_physics/layer_5="detectRadius"
 
 [rendering]
 

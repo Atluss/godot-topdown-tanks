@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://tanks/EnemyTank.tscn" type="PackedScene" id=4]
 [ext_resource path="res://bullets/EnemyBullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tanks/EnemyTurret.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bullets/SmallBullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://environment/Obstacle.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -27,6 +30,7 @@ script = ExtResource( 1 )
 
 [node name="Ground" type="TileMap" parent="." index="0"]
 
+position = Vector2( 2.50903, -1.67017 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 128, 128 )
@@ -49,7 +53,6 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 2071.39, 1324.41 )
-max_health = 100
 
 [node name="Paths" type="Node2D" parent="." index="2"]
 
@@ -100,6 +103,51 @@ max_health = 100
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 6 )]
 
+[node name="EnemyTank" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 1729.48, 609.215 )
+rotation = 0.950164
+Bullet = ExtResource( 8 )
+max_speed = 0
+rotation_speed = 1.0
+gun_cooldown = 0.15
+max_health = 70
+turret_speed = 5.0
+detect_radius = 400
+
+[node name="EnemyTank2" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 2594.43, 589.689 )
+rotation = 2.08812
+Bullet = ExtResource( 8 )
+max_speed = 0
+rotation_speed = 1.0
+gun_cooldown = 0.15
+max_health = 70
+turret_speed = 5.0
+detect_radius = 400
+
+[node name="Obstacles" type="Node2D" parent="." index="6"]
+
+[node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 9 )]
+
+position = Vector2( 1482.93, 1705.41 )
+rotation = 1.13773
+
+[node name="Obstacle2" parent="Obstacles" index="1" instance=ExtResource( 9 )]
+
+position = Vector2( 1785.12, 1691.78 )
+rotation = 1.13773
+type = 16
+
+[node name="Obstacle3" parent="Obstacles" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 2348.55, 1632.91 )
+rotation = 1.53411
+type = 18
+
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
 
 [connection signal="shoot" from="Player" to="." method="_on_Tank_shoot"]
@@ -107,5 +155,9 @@ max_health = 100
 [connection signal="shoot" from="Paths/Path2D/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
 
 [connection signal="shoot" from="Paths/Path2D2/PathFollow2D/EnemyTank" to="." method="_on_Tank_shoot"]
+
+[connection signal="shoot" from="EnemyTank" to="." method="_on_Tank_shoot"]
+
+[connection signal="shoot" from="EnemyTank2" to="." method="_on_Tank_shoot"]
 
 
