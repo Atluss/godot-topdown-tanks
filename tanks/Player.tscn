@@ -14,7 +14,7 @@ extents = Vector2( 40.0229, 37.3374 )
 
 position = Vector2( 741.177, 459.959 )
 collision_layer = 2
-collision_mask = 5
+collision_mask = 37
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "collision" ]
 Bullet = ExtResource( 3 )
@@ -22,6 +22,8 @@ max_speed = 200
 rotation_speed = 1.0
 gun_cooldown = 0.4
 max_health = 100
+gun_shots = 1
+gun_spread = 0.2
 
 [node name="Body" parent="." index="0"]
 

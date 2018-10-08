@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends AnimatedSprite
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+"
 
 [node name="Bullet" type="Area2D"]
 
@@ -10,12 +34,16 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 8
+collision_mask = 15
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Collision" ]
 speed = null
 damage = null
-lifetime = null
+lifetime = 0.4
+steer_force = 0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -23,6 +51,8 @@ region_enabled = true
 _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
 
 [node name="Lifetime" type="Timer" parent="." index="2"]
 
@@ -35,7 +65,10 @@ autostart = true
 
 visible = false
 scale = Vector2( 0.5, 0.5 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 
