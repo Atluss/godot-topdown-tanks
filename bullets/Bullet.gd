@@ -9,7 +9,6 @@ var acceleration = Vector2()
 var target = null
 var velocity = Vector2()
 
-
 func _ready():
 	$Lifetime.wait_time = lifetime
 
@@ -49,7 +48,6 @@ func _on_Lifetime_timeout():
 
 func _on_Explosion_animation_finished():
 	queue_free()
-
 
 func _on_Bullet_area_entered(body):
 	if body.has_method('explode_bullet'):

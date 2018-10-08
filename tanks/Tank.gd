@@ -51,6 +51,7 @@ func explode():
 	$Body.hide()
 	$Explosion.show()
 	$Explosion.play()
+	emit_signal('dead')
 
 func _physics_process(delta):
 	if not alive:
