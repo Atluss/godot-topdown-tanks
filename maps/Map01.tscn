@@ -54,8 +54,8 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 2071.39, 1324.41 )
-gun_shots = 1
-gun_spread = 0.2
+gun_shots = 3
+gun_spread = 0.1
 
 [node name="Paths" type="Node2D" parent="." index="2"]
 
@@ -82,8 +82,7 @@ Bullet = ExtResource( 5 )
 rotation_speed = 1.0
 max_health = 100
 gun_shots = 3
-gun_spread = 0.2
-detect_radius = 400
+detect_radius = 800
 
 [node name="Path2D2" type="Path2D" parent="Paths" index="1"]
 
@@ -107,8 +106,7 @@ lookahead = 4.0
 Bullet = ExtResource( 6 )
 rotation_speed = 1.0
 max_health = 100
-gun_shots = 1
-gun_spread = 0.2
+detect_radius = 500
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 7 )]
 
@@ -116,13 +114,14 @@ gun_spread = 0.2
 
 position = Vector2( 1729.48, 609.215 )
 rotation = 0.950164
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
-gun_shots = 1
-gun_spread = 0.2
+gun_shots = 2
 turret_speed = 5.0
 detect_radius = 400
 
@@ -130,13 +129,14 @@ detect_radius = 400
 
 position = Vector2( 2594.43, 589.689 )
 rotation = 2.08812
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
-gun_shots = 1
-gun_spread = 0.2
+gun_shots = 3
 turret_speed = 5.0
 detect_radius = 400
 
@@ -159,6 +159,14 @@ position = Vector2( 2348.55, 1632.91 )
 rotation = 1.53411
 type = 18
 
+[node name="EnemyTank3" parent="." index="7" instance=ExtResource( 4 )]
+
+position = Vector2( 2281.05, 1180.71 )
+Bullet = ExtResource( 9 )
+rotation_speed = 1.0
+max_health = 100
+detect_radius = 300
+
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
@@ -172,5 +180,7 @@ type = 18
 [connection signal="shoot" from="EnemyTank" to="." method="_on_Tank_shoot"]
 
 [connection signal="shoot" from="EnemyTank2" to="." method="_on_Tank_shoot"]
+
+[connection signal="shoot" from="EnemyTank3" to="." method="_on_Tank_shoot"]
 
 

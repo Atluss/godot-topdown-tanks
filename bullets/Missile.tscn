@@ -66,13 +66,12 @@ _sections_unfolded = [ "Angular Velocity", "Animation", "Scale" ]
 
 [node name="Missile" instance=ExtResource( 1 )]
 
-collision_layer = 8
-collision_mask = 3
+collision_layer = 32
+collision_mask = 11
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision" ]
 speed = 400
 damage = 1
-lifetime = 0.4
+lifetime = 2.0
 steer_force = 25.0
 
 [node name="Sprite" parent="." index="0"]
@@ -84,8 +83,12 @@ _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
 
-visible = false
 shape = SubResource( 1 )
+
+[node name="Lifetime" parent="." index="2"]
+
+wait_time = 0.4
+autostart = false
 
 [node name="Particles2D" type="Particles2D" parent="." index="4"]
 
