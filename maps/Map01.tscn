@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://tanks/EnemyTurret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://bullets/SmallBullet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://environment/Obstacle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://environment/Pickup.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -54,7 +55,6 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 2071.39, 1324.41 )
-gun_shots = 3
 gun_spread = 0.1
 
 [node name="Paths" type="Node2D" parent="." index="2"]
@@ -80,8 +80,8 @@ lookahead = 4.0
 
 Bullet = ExtResource( 5 )
 rotation_speed = 1.0
+gun_cooldown = 1.0
 max_health = 100
-gun_shots = 3
 detect_radius = 800
 
 [node name="Path2D2" type="Path2D" parent="Paths" index="1"]
@@ -138,6 +138,8 @@ detect_radius = 400
 
 [node name="Obstacles" type="Node2D" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 1482.93, 1705.41 )
@@ -174,6 +176,17 @@ Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
 detect_radius = 300
+
+[node name="Items" type="Node2D" parent="." index="8"]
+
+[node name="Pickup" parent="Items" index="0" instance=ExtResource( 11 )]
+
+position = Vector2( 2234.39, 1617.91 )
+type = 0
+
+[node name="Pickup2" parent="Items" index="1" instance=ExtResource( 11 )]
+
+position = Vector2( 2410.13, 1849.44 )
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 
