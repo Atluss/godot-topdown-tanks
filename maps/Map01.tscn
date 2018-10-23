@@ -138,8 +138,6 @@ detect_radius = 400
 
 [node name="Obstacles" type="Node2D" parent="." index="6"]
 
-editor/display_folded = true
-
 [node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 1482.93, 1705.41 )
@@ -168,6 +166,12 @@ type = 2
 position = Vector2( 2912.15, 1818 )
 rotation = 1.53411
 type = 1
+
+[node name="Obstacle6" parent="Obstacles" index="5" instance=ExtResource( 10 )]
+
+position = Vector2( 3209.15, 1555 )
+rotation = 3.80735
+type = 9
 
 [node name="EnemyTank3" parent="." index="7" instance=ExtResource( 4 )]
 

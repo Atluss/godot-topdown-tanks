@@ -1,5 +1,7 @@
 extends "res://tanks/Tank.gd"
 
+var speed = 0
+
 func control(delta):
 	$Turret.look_at(get_global_mouse_position())
 	var rot_dir = 0
@@ -9,10 +11,16 @@ func control(delta):
 		rot_dir -= 1
 	rotation += rotation_speed * rot_dir * delta
 	velocity = Vector2()
-	if Input.is_action_pressed('forward'):
-		velocity += Vector2(max_speed, 0).rotated(rotation)
-	if Input.is_action_pressed('back'):
-		velocity += Vector2(-max_speed, 0).rotated(rotation)
-		velocity /= 2.0
+
+	if Input.is_action_pressed('forward') or Input.is_action_pressed('back'):
+		if Input.is_action_pressed('forward'):
+			speed = lerp(speed, max_speed, 0.10)
+		if Input.is_action_pressed('back'):
+			speed = lerp(speed, -max_speed/2, 0.10)
+	else:
+		speed = lerp(speed, 0, 0.05)
+
+	velocity += Vector2(speed, 0).rotated(rotation)
+	
 	if Input.is_action_just_pressed('click'):
 		shoot(gun_shots, gun_spread)
