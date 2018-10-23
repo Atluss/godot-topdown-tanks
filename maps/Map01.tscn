@@ -191,6 +191,12 @@ type = 0
 [node name="Pickup2" parent="Items" index="1" instance=ExtResource( 11 )]
 
 position = Vector2( 2410.13, 1849.44 )
+type = 0
+
+[node name="Pickup3" parent="Items" index="2" instance=ExtResource( 11 )]
+
+position = Vector2( 2561.18, 1436.56 )
+type = 1
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 
