@@ -33,6 +33,7 @@ func seek():
 	return steer
 
 func explode_bullet():
+	set_process(false)
 	velocity = Vector2()
 	$Sprite.hide()
 	$Explosion.show()

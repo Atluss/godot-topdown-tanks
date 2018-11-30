@@ -56,6 +56,7 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 
 position = Vector2( 2071.39, 1324.41 )
 gun_spread = 0.1
+ammo = 5
 
 [node name="Paths" type="Node2D" parent="." index="2"]
 
@@ -82,6 +83,8 @@ Bullet = ExtResource( 5 )
 rotation_speed = 1.0
 gun_cooldown = 1.0
 max_health = 100
+max_ammo = 20
+ammo = -1
 detect_radius = 800
 
 [node name="Path2D2" type="Path2D" parent="Paths" index="1"]
@@ -106,6 +109,8 @@ lookahead = 4.0
 Bullet = ExtResource( 6 )
 rotation_speed = 1.0
 max_health = 100
+max_ammo = 20
+ammo = -1
 detect_radius = 500
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 7 )]
@@ -120,6 +125,8 @@ rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 2
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -133,6 +140,8 @@ rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 3
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -179,6 +188,8 @@ position = Vector2( 2281.05, 1180.71 )
 Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
+max_ammo = 20
+ammo = -1
 detect_radius = 300
 
 [node name="Items" type="Node2D" parent="." index="8"]
@@ -197,6 +208,8 @@ type = 0
 
 position = Vector2( 2561.18, 1436.56 )
 type = 1
+
+[connection signal="ammo_change" from="Player" to="HUD" method="update_ammo"]
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 
