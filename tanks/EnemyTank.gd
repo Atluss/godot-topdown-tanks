@@ -24,9 +24,21 @@ func control(delta):
 		position = Vector2()
 	else:
 		if target:
+			velocity = Vector2()
+			var rot_dir = 0
 			var target_dir = (target.global_position - global_position).normalized()
 			var current_dir = Vector2(1, 0).rotated(global_rotation)
 			global_rotation = current_dir.linear_interpolate(target_dir, rotation_speed * delta).angle()
+			if abs(target_dir.dot(current_dir)) > 0.4:
+				speed = lerp(speed, max_speed, 0.01)
+				rot_dir += 1
+			else:
+				speed = lerp(speed, 0, 1)
+				rot_dir -= -1
+			if $LookAhead1.is_colliding() or $LookAhead2.is_colliding():
+				speed = lerp(speed, 0, .7)
+			velocity += Vector2(speed, 0).rotated(global_rotation * rot_dir)
+			
 	pass
 
 func _process(delta):
