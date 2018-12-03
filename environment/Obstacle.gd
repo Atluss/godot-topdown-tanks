@@ -38,8 +38,8 @@ func _update(_type):
 	type = _type
 	if !Engine.editor_hint:
 		yield(self, 'tree_entered')
-	$Sprite.region_enabled = true
 	$Sprite.region_rect = regions[type]
+	$Sprite.region_enabled = true
 	var rect = RectangleShape2D.new()
 	rect.extents = $Sprite.region_rect.size / 2
 	$CollisionShape2D.shape = rect
