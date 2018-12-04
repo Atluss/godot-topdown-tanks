@@ -69,7 +69,7 @@ curve = SubResource( 1 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D" index="0"]
 
 position = Vector2( 1601.45, 1012.35 )
-rotation = 1.57734
+rotation = 1.57731
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -94,7 +94,7 @@ curve = SubResource( 2 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2" index="0"]
 
 position = Vector2( 3556.63, 965.333 )
-rotation = 3.14159
+rotation = -3.14158
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -116,17 +116,12 @@ detect_radius = 500
 
 position = Vector2( 1729.48, 609.215 )
 rotation = 0.950164
-input_pickable = false
-collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 2
-gun_spread = 0.2
-max_ammo = 20
-ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -134,17 +129,12 @@ detect_radius = 400
 
 position = Vector2( 2594.43, 589.689 )
 rotation = 2.08812
-input_pickable = false
-collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 3
-gun_spread = 0.2
-max_ammo = 20
-ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
