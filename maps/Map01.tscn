@@ -26,7 +26,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 3556.63, 965.333, 0, 0, -105.92, 9.37348, 3103.63, 965.333, -0.937348, 30.9325, -3.74939, -73.1131, 3007.54, 886.892, 0, 0, 0, 0, 3007.54, -201.478, 0, 0, 0, 0, 4868.56, -195.595, 0, 0, 0, 0, 4846.98, 963.372, 0, 0, -47.8047, 0.937348, 3733.12, 965.333, -11.2482, -124.667, 0, -34.6819, 3648.8, 1067.31, 0, 0, -9.37348, 111.544, 3646.84, 1608.55, -84.3613, 1.8747, 150.913, -0.937348, 3758.61, 1732.09, 0, 0, 0, 0, 4841.1, 1728.17, 0, 0, 0, 0, 4821.49, 963.372, 0, 0, 0, 0, 3556.63, 965.333 )
 }
 
-[node name="Map01" type="Node2D" index="0"]
+[node name="Map01" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -54,7 +54,7 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 963.354, 1554.34 )
+position = Vector2( 1105.21, 1750.36 )
 gun_spread = 0.1
 max_ammo = -1
 ammo = 5
@@ -116,12 +116,17 @@ detect_radius = 500
 
 position = Vector2( 1729.48, 609.215 )
 rotation = 0.950164
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 2
+gun_spread = 0.2
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -129,26 +134,33 @@ detect_radius = 400
 
 position = Vector2( 2594.43, 589.689 )
 rotation = 2.08812
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 3
+gun_spread = 0.2
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
 [node name="Obstacles" type="Node2D" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 10 )]
 
-position = Vector2( 1339.09, 1725.96 )
-rotation = 1.59326
+position = Vector2( 1015.33, 1973.09 )
+rotation = 1.58725
 
 [node name="Obstacle2" parent="Obstacles" index="1" instance=ExtResource( 10 )]
 
-position = Vector2( 1785.12, 1691.78 )
-rotation = 1.13773
+position = Vector2( 1010.34, 1855.37 )
+rotation = 1.55564
 
 [node name="Obstacle3" parent="Obstacles" index="2" instance=ExtResource( 10 )]
 
@@ -176,8 +188,8 @@ type = 9
 
 [node name="EnemyTank3" parent="." index="7" instance=ExtResource( 4 )]
 
-position = Vector2( 1604.38, 1732.81 )
-rotation = 3.14048
+position = Vector2( 1028.97, 2195.68 )
+rotation = 0.35785
 Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
@@ -185,13 +197,17 @@ detect_radius = 800
 
 [node name="EnemyTank4" parent="." index="8" instance=ExtResource( 4 )]
 
-position = Vector2( 3130.23, 723.282 )
+position = Vector2( 617.32, 2050.17 )
+rotation = 1.9203
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
 Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
-detect_radius = 100
+detect_radius = 1000
 
 [node name="Items" type="Node2D" parent="." index="9"]
+
+editor/display_folded = true
 
 [node name="Pickup" parent="Items" index="0" instance=ExtResource( 11 )]
 
@@ -206,6 +222,11 @@ type = 0
 [node name="Pickup3" parent="Items" index="2" instance=ExtResource( 11 )]
 
 position = Vector2( 2561.18, 1436.56 )
+type = 1
+
+[node name="Pickup4" parent="Items" index="3" instance=ExtResource( 11 )]
+
+position = Vector2( 380.061, 1419.98 )
 type = 1
 
 [connection signal="ammo_change" from="Player" to="HUD" method="update_ammo"]
