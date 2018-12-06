@@ -4,6 +4,9 @@ var speed = 0
 
 var envintormentLayer = 0
 var enemyLayer = 2
+var laser_color = Color(1.0, .329, .298)
+var vis_color = Color(.867, .91, .247, 0.1)
+var hit_pos = []
 
 onready var parent = get_parent()
 
@@ -78,16 +81,39 @@ func control(delta):
 				velocity += Vector2(speed, 0).rotated(global_rotation)
 	
 		else:
-			speed = lerp(speed, 0, 0.7)
+			speed = lerp(speed, 0, 1)
+			velocity += Vector2(speed, 0).rotated(global_rotation)
 	pass
 
+func _draw():
+	draw_circle(Vector2(), detect_radius, vis_color)
+	if target:
+		for hit in hit_pos:
+			draw_circle((hit - global_position).rotated(-global_rotation), 5, laser_color)
+			draw_line(Vector2(), (hit - global_position).rotated(-global_rotation), laser_color)
+
+func aim(turetAngel):
+	hit_pos = []
+	var space_state = get_world_2d().direct_space_state
+	var target_extents = target.get_node('CollisionShape2D').shape.extents - Vector2(5, 5)
+	var nw = target.position - target_extents
+	var se = target.position + target_extents
+	var ne = target.position + Vector2(target_extents.x, -target_extents.y)
+	var sw = target.position + Vector2(-target_extents.x, target_extents.y)
+	for pos in [target.position, nw, ne, se, sw]:
+		var result = space_state.intersect_ray(position, pos, [self], collision_mask)
+		if result:
+			hit_pos.append(result.position)
+			if turetAngel > 0.9 and result.collider.name == "Player":
+				shoot(gun_shots, gun_spread, target)
+
 func _process(delta):
+	update()
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		var current_dir = Vector2(1, 0).rotated($Turret.global_rotation)
 		$Turret.global_rotation = current_dir.linear_interpolate(target_dir, turret_speed * delta).angle()
-		if target_dir.dot(current_dir) > 0.9:
-			shoot(gun_shots, gun_spread, target)
+		aim(target_dir.dot(current_dir))
 
 func _on_DetectRadius_body_entered(body):
 	target = body
