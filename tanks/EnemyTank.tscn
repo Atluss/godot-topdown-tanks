@@ -30,7 +30,6 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
 
-visible = false
 shape = SubResource( 1 )
 
 [node name="Turret" parent="." index="2"]
@@ -56,6 +55,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

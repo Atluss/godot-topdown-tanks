@@ -26,7 +26,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 3556.63, 965.333, 0, 0, -105.92, 9.37348, 3103.63, 965.333, -0.937348, 30.9325, -3.74939, -73.1131, 3007.54, 886.892, 0, 0, 0, 0, 3007.54, -201.478, 0, 0, 0, 0, 4868.56, -195.595, 0, 0, 0, 0, 4846.98, 963.372, 0, 0, -47.8047, 0.937348, 3733.12, 965.333, -11.2482, -124.667, 0, -34.6819, 3648.8, 1067.31, 0, 0, -9.37348, 111.544, 3646.84, 1608.55, -84.3613, 1.8747, 150.913, -0.937348, 3758.61, 1732.09, 0, 0, 0, 0, 4841.1, 1728.17, 0, 0, 0, 0, 4821.49, 963.372, 0, 0, 0, 0, 3556.63, 965.333 )
 }
 
-[node name="Map01" type="Node2D" index="0"]
+[node name="Map01" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -54,12 +54,15 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 963.354, 1554.34 )
+position = Vector2( 1274.71, 1811.64 )
+max_health = 1000
 gun_spread = 0.1
 max_ammo = -1
 ammo = 5
 
 [node name="Paths" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
 
 [node name="Path2D" type="Path2D" parent="Paths" index="0"]
 
@@ -116,12 +119,17 @@ detect_radius = 500
 
 position = Vector2( 1729.48, 609.215 )
 rotation = 0.950164
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 2
+gun_spread = 0.2
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -129,12 +137,17 @@ detect_radius = 400
 
 position = Vector2( 2594.43, 589.689 )
 rotation = 2.08812
+input_pickable = false
+collision/safe_margin = 0.08
 Bullet = ExtResource( 9 )
 max_speed = 0
 rotation_speed = 1.0
 gun_cooldown = 0.15
 max_health = 70
 gun_shots = 3
+gun_spread = 0.2
+max_ammo = 20
+ammo = -1
 turret_speed = 5.0
 detect_radius = 400
 
@@ -142,33 +155,63 @@ detect_radius = 400
 
 [node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 10 )]
 
-position = Vector2( 1339.09, 1725.96 )
-rotation = 1.59326
+position = Vector2( 917.631, 1970.82 )
+rotation = 1.58725
 
-[node name="Obstacle2" parent="Obstacles" index="1" instance=ExtResource( 10 )]
+[node name="Obstacle9" parent="Obstacles" index="1" instance=ExtResource( 10 )]
 
-position = Vector2( 1785.12, 1691.78 )
-rotation = 1.13773
+position = Vector2( 917.631, 2095.78 )
+rotation = 1.58725
 
-[node name="Obstacle3" parent="Obstacles" index="2" instance=ExtResource( 10 )]
+[node name="Obstacle10" parent="Obstacles" index="2" instance=ExtResource( 10 )]
+
+position = Vector2( 913.087, 2218.48 )
+rotation = 1.58725
+
+[node name="Obstacle11" parent="Obstacles" index="3" instance=ExtResource( 10 )]
+
+position = Vector2( 1194.82, 2223.02 )
+rotation = 1.58725
+
+[node name="Obstacle12" parent="Obstacles" index="4" instance=ExtResource( 10 )]
+
+position = Vector2( 1194.82, 2098.06 )
+rotation = 1.58725
+
+[node name="Obstacle2" parent="Obstacles" index="5" instance=ExtResource( 10 )]
+
+position = Vector2( 917.185, 1848.55 )
+rotation = 1.55564
+
+[node name="Obstacle7" parent="Obstacles" index="6" instance=ExtResource( 10 )]
+
+position = Vector2( 914.913, 1721.31 )
+rotation = 1.55564
+
+[node name="Obstacle8" parent="Obstacles" index="7" instance=ExtResource( 10 )]
+
+position = Vector2( 908.097, 1596.35 )
+rotation = 1.55564
+
+[node name="Obstacle3" parent="Obstacles" index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 2348.55, 1632.91 )
 rotation = 1.53411
 type = 18
 
-[node name="Obstacle5" parent="Obstacles" index="3" instance=ExtResource( 10 )]
+[node name="Obstacle5" parent="Obstacles" index="9" instance=ExtResource( 10 )]
 
 position = Vector2( 2878.99, 1846.77 )
 rotation = 1.53411
 type = 2
 
-[node name="Obstacle4" parent="Obstacles" index="4" instance=ExtResource( 10 )]
+[node name="Obstacle4" parent="Obstacles" index="10" instance=ExtResource( 10 )]
 
 position = Vector2( 2912.15, 1818 )
 rotation = 1.53411
 type = 1
 
-[node name="Obstacle6" parent="Obstacles" index="5" instance=ExtResource( 10 )]
+[node name="Obstacle6" parent="Obstacles" index="11" instance=ExtResource( 10 )]
 
 position = Vector2( 3209.15, 1555 )
 rotation = 3.80735
@@ -176,8 +219,8 @@ type = 9
 
 [node name="EnemyTank3" parent="." index="7" instance=ExtResource( 4 )]
 
-position = Vector2( 1604.38, 1732.81 )
-rotation = 3.14048
+position = Vector2( 742.69, 1884.41 )
+rotation = 0.35785
 Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
@@ -185,13 +228,17 @@ detect_radius = 800
 
 [node name="EnemyTank4" parent="." index="8" instance=ExtResource( 4 )]
 
-position = Vector2( 3130.23, 723.282 )
+position = Vector2( 753.645, 1725.27 )
+rotation = 1.9203
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
 Bullet = ExtResource( 9 )
 rotation_speed = 1.0
 max_health = 100
-detect_radius = 100
+detect_radius = 1000
 
 [node name="Items" type="Node2D" parent="." index="9"]
+
+editor/display_folded = true
 
 [node name="Pickup" parent="Items" index="0" instance=ExtResource( 11 )]
 
@@ -206,6 +253,11 @@ type = 0
 [node name="Pickup3" parent="Items" index="2" instance=ExtResource( 11 )]
 
 position = Vector2( 2561.18, 1436.56 )
+type = 1
+
+[node name="Pickup4" parent="Items" index="3" instance=ExtResource( 11 )]
+
+position = Vector2( 380.061, 1419.98 )
 type = 1
 
 [connection signal="ammo_change" from="Player" to="HUD" method="update_ammo"]
