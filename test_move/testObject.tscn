@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32.0216, 31.9367 )
 
-[node name="Body" type="KinematicBody2D" index="0"]
+[node name="Body" type="KinematicBody2D"]
 
 rotation = 3.74507e-07
 input_pickable = false
@@ -47,5 +47,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility" ]
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
