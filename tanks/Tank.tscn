@@ -65,6 +65,7 @@ max_speed = null
 rotation_speed = null
 gun_cooldown = null
 max_health = null
+offroad_friction = 1.5
 gun_shots = 1
 gun_spread = 0.2
 max_ammo = 20

@@ -10,6 +10,8 @@ export (int) var max_speed
 export (float) var rotation_speed
 export (float) var gun_cooldown
 export (int) var max_health
+export (float) var offroad_friction
+
 export (int) var gun_shots = 1 # number of projectiles per shot
 export (float, 0, 1.5) var gun_spread = 0.2 # angle between them
 export (int) var max_ammo = 20
@@ -19,6 +21,7 @@ var velocity = Vector2()
 var can_shoot = true
 var alive = true
 var health
+var map
 
 func _ready():
 	health = max_health
@@ -67,6 +70,11 @@ func _physics_process(delta):
 	if not alive:
 		return
 	control(delta)
+	if map:
+		var tile = map.get_cellv(map.world_to_map(position))
+		if tile in GLOBALS.slow_terrain:
+			velocity *= offroad_friction
+			print("speed up")
 	move_and_slide(velocity)
 
 func _on_GunTimer_timeout():
